@@ -8,13 +8,42 @@ const images = [
     'img/05.jpg',
 ];
 
-const slideContainer = document.querySelector('.slide-wrapper')
+let index = 0;
 
-console.log(slideContainer)
+const slideContainer = document.querySelector('.slide-container')
+
 
 for ( let i = 0; i < images.length; i++ ) {
 
-    const item =
-    slideContainer.innerHTML += item
+    const item = '<div class="item"><img src=" ${ images [i] } " alt=""></div>';
+    slideContainer.innerHTML += item;
 
 }
+
+const items = [...document.getElementsByClassName('item')]
+
+items[index].classlist.add('active')
+
+
+const left = document.querySelector('.left')
+
+left.addEventListener('click', function() {
+
+    if( index > 0 ) {
+        items[index].classList.remove('active')
+        index--
+        items[index].classList.add('active')
+    }
+
+})
+
+const right = document.querySelector('.right')
+
+right.addEventListener('click', function() {
+
+    if( index > items.length -1 ) {
+        items[index].classList.remove('active')
+        index++
+        items[index].classList.add('active')
+    }
+})
